@@ -1,0 +1,27 @@
+replicaCount: 2
+
+image:
+  repository: yourrepo/neonet-ai-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: 2000m
+    memory: 4Gi
+
+gpu:
+  enabled: false
+  count: 1
+
+service:
+  type: ClusterIP
+  port: 8000
+
+metrics:
+  enabled: true
+  path: /metrics
+  port: 8000

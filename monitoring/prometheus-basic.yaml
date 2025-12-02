@@ -1,0 +1,20 @@
+# monitoring/prometheus-basic.yaml (Kustomize-friendly)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+# Use kube-prometheus stack in production; this is a placeholder manifest to create namespace and configmap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: 'neonet'
+        static_configs:
+          - targets: ['ai-service.neonet.svc.cluster.local:8000']

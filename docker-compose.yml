@@ -1,0 +1,161 @@
+version: '3.8'
+
+services:
+  # NeoNet Blockchain Node (Rust Core)
+  neonet-node:
+    build:
+      context: ./rust-core
+      dockerfile: Dockerfile
+    container_name: neonet-node
+    ports:
+      - "6000:6000"
+      - "8545:8545"
+      - "9000:9000"
+    environment:
+      - RUST_LOG=info
+      - NEONET_MODE=validator
+      - EVM_ENABLED=true
+      - WASM_ENABLED=true
+      - QUANTUM_SIGNATURES=true
+    volumes:
+      - neonet-data:/data
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # Go Consensus Layer (P2P + PBFT + PoI)
+  neonet-consensus:
+    build:
+      context: ./go-consensus
+      dockerfile: Dockerfile
+    container_name: neonet-consensus
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "50051:50051"
+    environment:
+      - NEONET_NODE_URL=http://neonet-node:6000
+      - AI_SERVICE_URL=http://ai-validator:8000
+      - P2P_PORT=7000
+      - CONSENSUS_TYPE=pbft_poi
+    volumes:
+      - consensus-data:/data
+    depends_on:
+      - neonet-node
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # AI Validator Service (Python FastAPI)
+  ai-validator:
+    build:
+      context: ./python-ai-service
+      dockerfile: Dockerfile
+    container_name: ai-validator
+    command: uvicorn app.main_simplified:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://neonet:neonet@postgres:5432/neonet
+      - REDIS_URL=redis://redis:6379/0
+      - NEONET_NODE_URL=http://neonet-node:6000
+      - QUANTUM_CRYPTO_ENABLED=true
+      - POI_ENABLED=true
+    volumes:
+      - ai-data:/data
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # AI Worker (Background Task Processing)
+  ai-worker:
+    build:
+      context: ./python-ai-service
+      dockerfile: Dockerfile
+    container_name: ai-worker
+    command: python -m app.worker
+    environment:
+      - DATABASE_URL=postgresql://neonet:neonet@postgres:5432/neonet
+      - REDIS_URL=redis://redis:6379/0
+      - WORKER_CONCURRENCY=4
+    volumes:
+      - ai-data:/data
+    depends_on:
+      - ai-validator
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # Web Frontend (React dApp)
+  dapp:
+    build:
+      context: ./dapp
+      dockerfile: Dockerfile
+    container_name: neonet-dapp
+    ports:
+      - "5000:5000"
+    environment:
+      - VITE_API_URL=http://ai-validator:8000
+      - VITE_NODE_URL=http://neonet-node:8545
+    depends_on:
+      - ai-validator
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: neonet-postgres
+    environment:
+      - POSTGRES_USER=neonet
+      - POSTGRES_PASSWORD=neonet
+      - POSTGRES_DB=neonet
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # Redis (Task Queue + Cache)
+  redis:
+    image: redis:7-alpine
+    container_name: neonet-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - neonet
+    restart: unless-stopped
+
+  # IPFS Node (Decentralized Storage)
+  ipfs:
+    image: ipfs/kubo:latest
+    container_name: neonet-ipfs
+    ports:
+      - "4001:4001"
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs-data:/data/ipfs
+    networks:
+      - neonet
+    restart: unless-stopped
+
+networks:
+  neonet:
+    driver: bridge
+
+volumes:
+  neonet-data:
+  consensus-data:
+  ai-data:
+  postgres-data:
+  redis-data:
+  ipfs-data:

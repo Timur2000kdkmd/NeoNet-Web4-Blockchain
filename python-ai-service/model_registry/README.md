@@ -1,0 +1,1 @@
+Model registry: models stored as JSON artifacts. Worker will store trained models here.

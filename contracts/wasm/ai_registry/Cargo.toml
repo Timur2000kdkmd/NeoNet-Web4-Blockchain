@@ -1,0 +1,25 @@
+[package]
+name = "neonet-ai-registry"
+version = "1.0.0"
+authors = ["NeoNet Team"]
+edition = "2021"
+description = "NeoNet AI Model Registry - WASM Contract for AI model management"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+library = []
+
+[dependencies]
+cosmwasm-std = "1.5"
+cosmwasm-schema = "1.5"
+cw-storage-plus = "1.2"
+schemars = "0.8"
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+thiserror = "1.0"
+
+[dev-dependencies]
+cosmwasm-vm = "1.5"

@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: neonet-ai-servicemonitor
+spec:
+  selector:
+    matchLabels:
+      app: neonet
+  endpoints:
+  - port: http-metrics
+    path: /metrics
+    interval: 30s

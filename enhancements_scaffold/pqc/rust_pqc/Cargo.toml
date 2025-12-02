@@ -1,0 +1,13 @@
+[package]
+name = "neonet_pqc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pqcrypto-dilithium = "0.7"
+pqcrypto-kyber = "0.7"
+ed25519-dalek = { version = "1.0", features = ["std"] }
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+hex = "0.4"

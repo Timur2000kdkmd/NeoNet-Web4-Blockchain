@@ -1,0 +1,13 @@
+# k8s/aks.yaml - Notes and snippets for AKS (Azure)
+# 1) Use Azure Key Vault Provider for Secrets Store CSI driver to mount secrets as volumes.
+# 2) Use node pools with GPU SKUs for training workloads.
+# Example snippet:
+apiVersion: v1
+kind: Secret
+metadata:
+  name: neonet-secrets
+  namespace: neonet
+type: Opaque
+data:
+  DATABASE_URL: BASE64_ENCODED_VALUE
+  KEYSTORE_PASSWORD: BASE64_ENCODED_PASSWORD

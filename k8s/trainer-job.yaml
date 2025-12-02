@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: neonet-trainer-job
+  namespace: neonet
+spec:
+  template:
+    spec:
+      containers:
+      - name: trainer
+        image: yourrepo/neonet-trainer:cpu
+        env:
+        - name: NEONET_DATA_DIR
+          value: /data/transactions
+        - name: NEONET_CHECKPOINT_DIR
+          value: /data/checkpoints
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      restartPolicy: Never
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: neonet-data-pvc
+  backoffLimit: 2

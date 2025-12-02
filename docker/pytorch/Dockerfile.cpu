@@ -1,0 +1,9 @@
+# Dockerfile.pytorch (CPU)
+FROM python:3.11-slim
+WORKDIR /app
+COPY python-ai-service/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+# Install CPU PyTorch wheel - user must adjust if GPU desired
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+COPY python-ai-service /app
+CMD ["python", "pytorch_trainer.py"]

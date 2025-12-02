@@ -1,0 +1,79 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1200 >>
+stream
+BT
+/F1 24 Tf
+50 720 Td
+(NeoNet Web4 Blockchain Whitepaper) Tj
+/F1 12 Tf
+0 -40 Td
+(Version 1.0 - December 2025) Tj
+0 -30 Td
+(-------------------------------------------) Tj
+0 -30 Td
+(ABSTRACT) Tj
+0 -20 Td
+(NeoNet is an AI-powered Web4 blockchain with Proof of Intelligence) Tj
+0 -15 Td
+(consensus, quantum-resistant security, and unified EVM+WASM runtime.) Tj
+0 -30 Td
+(KEY FEATURES) Tj
+0 -20 Td
+(1. Proof of Intelligence - AI validates blocks through ML training) Tj
+0 -15 Td
+(2. Post-Quantum Cryptography - Ed25519 + Dilithium3 hybrid) Tj
+0 -15 Td
+(3. Unified Runtime - EVM and WASM as integrated fabric) Tj
+0 -15 Td
+(4. Three-Token Economy - NEO, WASM-X, CPT) Tj
+0 -15 Td
+(5. DualGov - 30% AI + 70% DAO voting) Tj
+0 -30 Td
+(TOKEN ECONOMY) Tj
+0 -20 Td
+(NEO: Governance, Gas, Staking - 1B supply) Tj
+0 -15 Td
+(WASM-X: Developer Rewards - 500M supply) Tj
+0 -15 Td
+(CPT: AI Compute Rewards - 1B supply) Tj
+0 -30 Td
+(NETWORK SPECS) Tj
+0 -20 Td
+(Chain ID: 8888) Tj
+0 -15 Td
+(Block Time: ~1 second) Tj
+0 -15 Td
+(TPS: 12,500+) Tj
+0 -15 Td
+(Consensus: Proof of Intelligence) Tj
+0 -30 Td
+(For full documentation visit: https://docs.neonet.ai) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000266 00000 n
+0000001520 00000 n
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1599
+%%EOF

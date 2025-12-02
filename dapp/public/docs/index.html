@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoNet Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a2a 100%);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        h1 {
+            font-size: 48px;
+            background: linear-gradient(90deg, #00ffc8, #00a8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        h2 { color: #00ffc8; margin: 40px 0 20px; font-size: 28px; }
+        h3 { color: #00a8ff; margin: 24px 0 12px; font-size: 20px; }
+        p { color: #8892b0; margin-bottom: 16px; }
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 200, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            color: #00ffc8;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 16px 0;
+            border: 1px solid rgba(0, 255, 200, 0.2);
+        }
+        pre code { padding: 0; background: transparent; }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .badge-green { background: rgba(0, 255, 200, 0.2); color: #00ffc8; }
+        .badge-blue { background: rgba(0, 168, 255, 0.2); color: #00a8ff; }
+        .badge-purple { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        ul { padding-left: 24px; color: #8892b0; }
+        li { margin-bottom: 8px; }
+        a { color: #00ffc8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .nav {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 255, 200, 0.2);
+            margin-bottom: 40px;
+        }
+        .nav a {
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(0, 255, 200, 0.1);
+        }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: #00ffc8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="/">Home</a>
+            <a href="#getting-started">Getting Started</a>
+            <a href="#wallet">Wallet</a>
+            <a href="#tokens">Tokens</a>
+            <a href="#staking">Staking</a>
+            <a href="#gpu">GPU Mining</a>
+            <a href="#api">API</a>
+        </nav>
+
+        <h1>NeoNet Documentation</h1>
+        <p style="font-size: 20px; margin-bottom: 40px;">
+            Complete guide to NeoNet Web4 Blockchain - AI-powered, quantum-resistant, unified runtime.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <span class="badge badge-green">AI Consensus</span>
+                <h3>Proof of Intelligence</h3>
+                <p>AI validates blocks through machine learning model training and verification.</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-purple">Quantum Safe</span>
+                <h3>Post-Quantum Cryptography</h3>
+                <p>Dilithium3 signatures protect your assets against future quantum attacks.</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-blue">High Performance</span>
+                <h3>12,500 TPS</h3>
+                <p>Ultra-fast transaction processing with unified EVM+WASM runtime.</p>
+            </div>
+        </div>
+
+        <h2 id="getting-started">Getting Started</h2>
+        
+        <div class="card">
+            <h3>1. Create Your Wallet</h3>
+            <p>Click "Connect Wallet" and choose "Create New Wallet". You'll receive:</p>
+            <ul>
+                <li><strong>24-word recovery phrase</strong> - Write it down and store securely!</li>
+                <li><strong>EVM Address (0x...)</strong> - MetaMask compatible, for Ethereum ecosystem</li>
+                <li><strong>Quantum Address (neo1...)</strong> - Post-quantum safe for future security</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>2. Get Test Tokens</h3>
+            <p>Use our faucet to get test tokens:</p>
+            <pre><code>curl -X POST https://faucet.neonet.ai/request \
+  -H "Content-Type: application/json" \
+  -d '{"address": "YOUR_ADDRESS"}'</code></pre>
+        </div>
+
+        <div class="card">
+            <h3>3. Make Your First Transaction</h3>
+            <p>Go to the "Send" tab, select a token, enter recipient address and amount. Click "Send Transaction".</p>
+        </div>
+
+        <h2 id="wallet">Web4 Wallet</h2>
+
+        <div class="card">
+            <h3>Dual Address System</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Format</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td>EVM Address</td>
+                    <td><code>0x742d35Cc...</code></td>
+                    <td>MetaMask compatible, DeFi, NFTs</td>
+                </tr>
+                <tr>
+                    <td>Quantum Address</td>
+                    <td><code>neo1qz5a8k...</code></td>
+                    <td>Post-quantum safe, future-proof</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Signature Modes</h3>
+            <ul>
+                <li><strong>Hybrid (Default)</strong> - ECDSA + Dilithium3. Maximum security.</li>
+                <li><strong>EVM Only</strong> - Standard ECDSA. MetaMask compatible.</li>
+                <li><strong>Quantum Only</strong> - Dilithium3 only. Maximum quantum resistance.</li>
+            </ul>
+        </div>
+
+        <h2 id="tokens">Token Economy</h2>
+
+        <div class="grid">
+            <div class="card">
+                <span class="badge badge-green">NEO</span>
+                <h3>NEO Token</h3>
+                <p><strong>Purpose:</strong> Governance, Gas, Staking</p>
+                <p><strong>Max Supply:</strong> 1,000,000,000</p>
+                <p>Main utility token for all network operations and governance voting.</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-blue">WASM-X</span>
+                <h3>WASM-X Token</h3>
+                <p><strong>Purpose:</strong> Developer Rewards</p>
+                <p><strong>Max Supply:</strong> 500,000,000</p>
+                <p>Earned by deploying and maintaining WASM smart contracts.</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-purple">CPT</span>
+                <h3>Compute Power Token</h3>
+                <p><strong>Purpose:</strong> AI Mining Rewards</p>
+                <p><strong>Max Supply:</strong> 1,000,000,000</p>
+                <p>Earned by providing GPU compute power for AI tasks.</p>
+            </div>
+        </div>
+
+        <h2 id="staking">Staking</h2>
+
+        <div class="card">
+            <h3>How to Stake</h3>
+            <ol>
+                <li>Go to the "Staking" tab</li>
+                <li>Enter the amount of NEO to stake</li>
+                <li>Click "Stake NEO"</li>
+                <li>Earn rewards at current APR (12.5%)</li>
+            </ol>
+            
+            <h3>AI Validator Bonus</h3>
+            <p>Stake 100,000+ NEO and provide GPU compute to become an AI validator. 
+               Earn an additional 2.5% APR bonus!</p>
+        </div>
+
+        <h2 id="gpu">GPU Mining</h2>
+
+        <div class="card">
+            <h3>Quick Start</h3>
+            <pre><code># Install NeoNet Miner
+curl -sSL https://neonet.ai/install | bash
+
+# Configure your wallet
+neonet-miner config --wallet YOUR_ADDRESS
+
+# Start mining
+neonet-miner start --gpu auto</code></pre>
+        </div>
+
+        <div class="card">
+            <h3>Estimated Earnings</h3>
+            <table>
+                <tr><th>GPU Model</th><th>Est. Daily Earnings</th></tr>
+                <tr><td>NVIDIA RTX 4090</td><td>~500 CPT/day</td></tr>
+                <tr><td>NVIDIA RTX 4080</td><td>~350 CPT/day</td></tr>
+                <tr><td>NVIDIA RTX 3090</td><td>~280 CPT/day</td></tr>
+                <tr><td>AMD RX 7900 XTX</td><td>~300 CPT/day</td></tr>
+            </table>
+        </div>
+
+        <h2 id="api">API Reference</h2>
+
+        <div class="card">
+            <h3>Base URL</h3>
+            <code>https://api.neonet.ai/v1</code>
+
+            <h3>Authentication</h3>
+            <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+        </div>
+
+        <div class="card">
+            <h3>Endpoints</h3>
+            <table>
+                <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+                <tr><td>GET</td><td><code>/health</code></td><td>Health check</td></tr>
+                <tr><td>GET</td><td><code>/network/stats</code></td><td>Network statistics</td></tr>
+                <tr><td>POST</td><td><code>/transactions</code></td><td>Submit transaction</td></tr>
+                <tr><td>GET</td><td><code>/transactions/{hash}</code></td><td>Get transaction</td></tr>
+                <tr><td>POST</td><td><code>/tasks</code></td><td>Submit AI task</td></tr>
+                <tr><td>GET</td><td><code>/tasks/{id}</code></td><td>Get task status</td></tr>
+                <tr><td>POST</td><td><code>/miners</code></td><td>Register miner</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Example: Submit Transaction</h3>
+            <pre><code>curl -X POST https://api.neonet.ai/v1/transactions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "from": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+    "to": "0x8ba1f109551bd432803012645hac136ddd64dba72",
+    "value": "1000000000000000000",
+    "token": "NEO"
+  }'</code></pre>
+        </div>
+
+        <h2>Support</h2>
+        <div class="card">
+            <p>Need help? Reach out to us:</p>
+            <ul>
+                <li>Discord: <a href="#">discord.gg/neonet</a></li>
+                <li>Twitter: <a href="#">@NeoNetBlockchain</a></li>
+                <li>GitHub: <a href="#">github.com/neonet</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

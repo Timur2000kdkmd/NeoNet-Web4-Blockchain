@@ -1,0 +1,4 @@
+# k8s/eks.yaml - Notes and snippets for EKS
+# 1) Use IAM Roles for Service Accounts (IRSA) to grant access to AWS KMS/Secrets Manager.
+# 2) Use EKS managed node groups with GPU instances for training.
+# Example: create a secret via Secrets Manager and mount using CSI driver.

@@ -1,0 +1,74 @@
+version: '3.8'
+services:
+  ai-service:
+    build: ../python-ai-service
+    ports:
+      - '8000:8000'
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:password@postgres/neoai}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - AGG_THRESHOLD=1
+    depends_on:
+      - postgres
+      - redis
+
+  ai-worker:
+    build: ../python-ai-service
+    command: ["python", "worker.py"]
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:password@postgres/neoai}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+    depends_on:
+      - ai-service
+      - redis
+      - postgres
+
+  relayer:
+    build: ../relayer
+    command: ["python", "relayer.py"]
+    environment:
+      - AI_BASE=http://ai-service:8000
+      - ETH_NODE=${ETH_NODE:-http://geth:8545}
+      - RELAYER_KEY=${RELAYER_KEY:-}
+      - ORACLE_ADDR=${ORACLE_ADDR:-0x0000000000000000000000000000000000000000}
+      - ORACLE_ABI=/app/oracle_abi.json
+    depends_on:
+      - ai-service
+
+  cosmwasm-mock:
+    build: ../cosmwasm-mock
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "1317"]
+    ports:
+      - "1317:1317"
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: neoai
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  geth:
+    image: ethereum/client-go:stable
+    command: ["--dev", "--http", "--http.addr", "0.0.0.0", "--http.api", "eth,net,web3,personal,miner"]
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./data/geth:/root/.ethereum
+
+ai-trainer:
+  build: ../python-ai-service
+  command: ["python", "trainer.py"]
+  environment:
+    - ETH_NODE=${ETH_NODE:-http://geth:8545}
+  depends_on:
+    - geth

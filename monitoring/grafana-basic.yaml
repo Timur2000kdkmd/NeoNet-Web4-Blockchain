@@ -1,0 +1,5 @@
+# monitoring/grafana-dashboard.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: grafana

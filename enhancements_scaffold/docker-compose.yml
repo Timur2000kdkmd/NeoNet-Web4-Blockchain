@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  pqc_test:
+    build:
+      context: .
+      dockerfile: enhancements_scaffold/ci/pqc_test.Dockerfile
+    volumes:
+      - ./:/workspace
+    environment:
+      - RUST_BACKTRACE=1
+    tty: true

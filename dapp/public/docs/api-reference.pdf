@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1400 >>
+stream
+BT
+/F1 24 Tf
+50 720 Td
+(NeoNet API Reference) Tj
+/F1 12 Tf
+0 -40 Td
+(Version 1.0 - December 2025) Tj
+0 -30 Td
+(-------------------------------------------) Tj
+0 -25 Td
+(BASE URL: https://api.neonet.ai) Tj
+0 -30 Td
+(ENDPOINTS) Tj
+0 -20 Td
+(GET /health - Health check) Tj
+0 -15 Td
+(GET /poi/network/stats - Network statistics) Tj
+0 -15 Td
+(POST /register_miner - Register GPU miner) Tj
+0 -15 Td
+(POST /submit_task - Submit AI task) Tj
+0 -15 Td
+(POST /poi/validator/register - Register validator) Tj
+0 -15 Td
+(POST /poi/proof/submit - Submit AI proof) Tj
+0 -15 Td
+(POST /fl/register - Join federated learning) Tj
+0 -15 Td
+(POST /fl/train - Train local model) Tj
+0 -15 Td
+(POST /fl/aggregate - Aggregate models) Tj
+0 -15 Td
+(POST /ai/generate_contract - Generate contract) Tj
+0 -15 Td
+(POST /ai/audit_contract - Security audit) Tj
+0 -30 Td
+(AUTHENTICATION) Tj
+0 -20 Td
+(Header: Authorization: Bearer YOUR_API_KEY) Tj
+0 -30 Td
+(NETWORK CONFIG) Tj
+0 -20 Td
+(Chain ID: 8888) Tj
+0 -15 Td
+(RPC: https://rpc.neonet.ai) Tj
+0 -15 Td
+(Explorer: https://explorer.neonet.ai) Tj
+0 -30 Td
+(SDK INSTALLATION) Tj
+0 -20 Td
+(npm install @neonet/sdk) Tj
+0 -15 Td
+(pip install neonet-sdk) Tj
+0 -30 Td
+(For examples visit: https://docs.neonet.ai/api) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000266 00000 n
+0000001720 00000 n
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1799
+%%EOF

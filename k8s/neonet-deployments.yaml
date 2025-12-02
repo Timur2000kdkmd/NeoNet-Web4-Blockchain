@@ -1,0 +1,75 @@
+# k8s/neonet-deployments.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: neonet
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-service
+  namespace: neonet
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-service
+  template:
+    metadata:
+      labels:
+        app: ai-service
+    spec:
+      containers:
+      - name: ai-service
+        image: yourrepo/neonet-ai-service:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: neonet-secrets
+              key: DATABASE_URL
+        - name: REDIS_URL
+          value: redis://redis:6379/0
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: relayer
+  namespace: neonet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: relayer
+  template:
+    metadata:
+      labels:
+        app: relayer
+    spec:
+      containers:
+      - name: relayer
+        image: yourrepo/neonet-relayer:latest
+        env:
+        - name: KEYSTORE_PATH
+          value: /secrets/keystore.json
+        - name: KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neonet-secrets
+              key: KEYSTORE_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-service
+  namespace: neonet
+spec:
+  selector:
+    app: ai-service
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

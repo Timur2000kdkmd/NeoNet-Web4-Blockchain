@@ -1,0 +1,16 @@
+AI Security Checklist (detailed)
+--------------------------------
+- Sandbox options:
+  - Use WASM runtimes (wasmtime/wazero) or gVisor/Docker with seccomp profiles.
+  - Limit CPU, memory, and filesystem access.
+- Privacy:
+  - Apply differential privacy on model updates before sharing.
+  - Use secure aggregation protocols (e.g., secure multiparty computation) for federated updates.
+- Attestation:
+  - Use TPM/SGX/SEV attestation or remote attestation frameworks to verify runtime integrity.
+- Networking:
+  - Encrypt all P2P traffic; sign all governance messages.
+- Auditing:
+  - Log model inputs/outputs with privacy-preserving measures.
+- Testing:
+  - Fuzz the APIs, run adversarial robustness tests on the model.

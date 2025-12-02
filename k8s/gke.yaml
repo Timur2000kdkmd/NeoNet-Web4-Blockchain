@@ -1,0 +1,15 @@
+# k8s/gke.yaml - Notes and snippets for GKE
+# 1) Enable Workload Identity to grant access to GCP KMS.
+# 2) Create a Secret with KMS-encrypted keystore or use Secret Manager CSI driver.
+# Example Secret (do not store plaintext in repo):
+apiVersion: v1
+kind: Secret
+metadata:
+  name: neonet-secrets
+  namespace: neonet
+type: Opaque
+data:
+  DATABASE_URL: BASE64_ENCODED_VALUE
+  KEYSTORE_PASSWORD: BASE64_ENCODED_PASSWORD
+
+# Use GKE node pools with GPU (if using GPU training) and attach IAM roles for KMS access.

@@ -1,0 +1,9 @@
+{
+  "ed25519_public": "S+YcYNwVKD82dcYZL5mVebNfHjiDRW+MSd6aBD390ac=",
+  "dilithium_public": "nY2Klq8hzo0xfFZ1b97wWgdSubKBmfExEmYVhdAKadk=",
+  "kyber_public": "lSacfGy4Yjos2slRt4K85z3iW+BZ2+Rbm1N7nfkjh9Y=",
+  "algorithm": "Hybrid-Fallback",
+  "ed25519_private": "nMxyYD0N7M72r1ujZAV3VV77A3aC9sqjnIqjTLVoLWQ=",
+  "dilithium_private": "55doCT1BZPxgkk/YVOSqjnSmgM3+8eA/iQFCu+axtNo=",
+  "kyber_private": "uPPrtudcFQ3MzK/UlRF6pamMEV7OQfAAaCFK6J8Kb64="
+}
